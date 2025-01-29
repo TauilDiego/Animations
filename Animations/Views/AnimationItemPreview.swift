@@ -11,11 +11,21 @@ struct AnimationItemPreview: View {
     let AnimationItem: ItemsAnimations
     
     var body: some View {
-        Text(AnimationItem.title)
-            .frame(maxWidth: .infinity, minHeight: 100)
-            .background(Color.blue.opacity(0.7))
-            .foregroundColor(.white)
-            .cornerRadius(10)
+        ZStack {
+            Image(AnimationItem.image)
+                .resizable()
+                .frame(width: .infinity, height: 100)
+                .shadow(radius: 10)
+                .cornerRadius(10)
+            
+            Text(AnimationItem.title)
+                .frame(maxWidth: .infinity, minHeight: 100)
+                .foregroundColor(.purple)
+                .font(.title)
+                .bold()
+                .cornerRadius(10)
+        }
+        
     }
 }
 

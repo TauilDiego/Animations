@@ -18,7 +18,7 @@ struct ContentView: View {
                 let columns = calculateColumns(for: geometry.size.width)
                 VStack {
                     
-                    ScrollView {
+                    ScrollView(.vertical) {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(items) { mock in
                                 NavigationLink {
@@ -26,6 +26,7 @@ struct ContentView: View {
                                         .navigationTransition(.zoom(sourceID: mock.id, in: animationNamespace ))
                                 } label: {
                                     AnimationItemPreview(AnimationItem: mock)
+                                        .shadow(radius: 40)
                                 }
                                 .matchedTransitionSource(
                                     id: mock.id,

@@ -19,7 +19,7 @@ struct AnimationItemView: View {
                         Text("\(AnimationItem.title)")
                             .font(.headline)
                             .fontWeight(.semibold)
-                            .foregroundColor(.black)
+                            .foregroundColor(.accentColor)
                         
                         Spacer()
                     }
@@ -29,6 +29,7 @@ struct AnimationItemView: View {
                         Image(AnimationItem.image)
                             .resizable()
                             .frame(width: 300, height: 300)
+                            .cornerRadius(20)
                         Spacer()
                     }
                 }

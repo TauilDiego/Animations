@@ -17,7 +17,6 @@ struct ContentView: View {
             GeometryReader { geometry in
                 let columns = calculateColumns(for: geometry.size.width)
                 VStack {
-                    
                     ScrollView(.vertical) {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(items) { mock in

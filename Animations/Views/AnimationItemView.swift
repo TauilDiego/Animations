@@ -16,6 +16,7 @@ struct AnimationItemView: View {
         GeometryReader { geometry in
             VStack {
                 VStack {
+                    
                     HStack {
                         Spacer()
                         Text("\(AnimationItem.title)")
@@ -24,6 +25,9 @@ struct AnimationItemView: View {
                             .foregroundColor(.accentColor)
                         
                         Spacer()
+                    }
+                    HStack {
+                        Text("\(rotationX)")
                     }
                     
                     HStack {
@@ -44,12 +48,14 @@ struct AnimationItemView: View {
                             .gesture(
                                 DragGesture()
                                     .onChanged { value in
-                                        rotationX = value.translation.width * 0.5
-                                        print(rotationX)
+                                        rotationX = value.translation.width
                                     }
                                     .onEnded { value in
+                                        let diff360 = value.predictedEndLocation.x.truncatingRemainder(dividingBy: 360)
                                         withAnimation(.spring()) {
-                                            rotationX = value.predictedEndLocation.x
+                                            
+                                            rotationX =  value.predictedEndLocation.x - diff360
+                                            
                                         }
                                     }
                                 

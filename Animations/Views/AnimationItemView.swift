@@ -32,7 +32,7 @@ struct AnimationItemView: View {
                             .resizable()
                             .frame(width: 300, height: 300)
                             .cornerRadius(20)
-                            .clipShape(Circle())
+//                            .clipShape(Circle())
 //                            .overlay {
 //                                Circle().stroke(Color.gray, lineWidth: 4)
 //                            }
@@ -44,17 +44,20 @@ struct AnimationItemView: View {
                             .gesture(
                                 DragGesture()
                                     .onChanged { value in
-                                        rotationX = value.translation.height * 1
+                                        rotationX = value.translation.width * 0.5
+                                        print(rotationX)
                                     }
-                                    .onEnded { _ in
+                                    .onEnded { value in
                                         withAnimation(.spring()) {
-                                            rotationX = 0
+                                            rotationX = value.predictedEndLocation.x
                                         }
                                     }
                                 
                             )
+                            
                         Spacer()
                     }
+                    
                 }
                 
                 
@@ -62,6 +65,7 @@ struct AnimationItemView: View {
                 
             }
         }
+        
         
     }
 }
